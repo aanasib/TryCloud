@@ -15,7 +15,7 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class BasePage {
-//this page is for all the base locators
+//this page is for all the base locators. hello
     @FindBy(xpath = "//div[@class='logo logo-icon']")
     public WebElement tryCloudIcon;
 
