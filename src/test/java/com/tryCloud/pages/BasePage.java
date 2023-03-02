@@ -1,10 +1,7 @@
 package com.tryCloud.pages;
-
-
-
-
 import com.tryCloud.utilities.BrowserUtils;
 import com.tryCloud.utilities.Driver;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -18,25 +15,55 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class BasePage {
+//this page is for all the base locators
+    @FindBy(xpath = "//div[@class='logo logo-icon']")
+    public WebElement tryCloudIcon;
 
-    @FindBy(css = "span.title-level-1")
-    public List<WebElement> menuOptions;
+    @FindBy(xpath = "")
+    public WebElement dashboard;
 
-    @FindBy(css = "div[class='loader-mask shown']")
-    @CacheLookup
-    protected WebElement loaderMask;
+    @FindBy(xpath = "")
+    public WebElement files;
+
+    @FindBy(xpath = "")
+    public WebElement photos;
+
+    @FindBy(xpath = "")
+    public WebElement Activity;
+
+    @FindBy(xpath = "//a[contains(@aria-label,'Talk')]")
+    public WebElement Talk;
+
+    @FindBy(xpath = "(//*[@class='app-icon'])[6]")
+    public WebElement Contacts;
+
+    @FindBy(xpath = "(//*[@class='app-icon'])[7]")
+    public WebElement circles;
+
+    @FindBy(xpath = "")
+    public WebElement calendar;
+
+    @FindBy(xpath = "")
+    public WebElement deck;
+
+    @FindBy(xpath = "//div[@class='header-menu unified-search']")
+    public WebElement searchBar;
+
+    @FindBy(xpath = "//img[@class='svg']")
+    public WebElement notificationIcon;
+
+    @FindBy(xpath = "//div[@id='contactsmenu']")
+    public WebElement Connections;
 
     @FindBy(css = "h1[class='oro-subtitle']")
     public WebElement pageSubTitle;
 
-    @FindBy(css = "#user-menu > a")
-    public WebElement userName;
+    @FindBy(xpath = "//div[@class='menutoggle']")
+    public WebElement Groups;
 
-    @FindBy(linkText = "Logout")
-    public WebElement logOutLink;
-
-    @FindBy(linkText = "My User")
-    public WebElement myUser;
+    @FindBy(css = "div[class='loader-mask shown']")
+    @CacheLookup
+    protected WebElement loaderMask;
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -56,7 +83,7 @@ public abstract class BasePage {
 
     /**
      * Waits until loader screen present. If loader screen will not pop up at all,
-     * NoSuchElementException will be handled  bu try/catch block
+     * NoSuchElementException will be handled  by try/catch block
      * Thus, we can continue in any case.
      */
     public void waitUntilLoaderScreenDisappear() {
@@ -72,9 +99,9 @@ public abstract class BasePage {
 
 
     /**
-     * This method will navigate user to the specific module in vytrack application.
+     * This method will navigate user to the specific module in tryCloud application.
      * For example: if tab is equals to Activities, and module equals to Calls,
-     * Then method will navigate user to this page: http://qa2.vytrack.com/call/
+     * Then method will navigate user to this page: http://qa2.trycloud.net/index.php/login?clear=1
      *
      * @param tab
      * @param module
